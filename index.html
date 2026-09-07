@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>中文學習與互動平臺 </title>
+    <title>中文學習與互動平臺</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome Icons -->
@@ -72,71 +72,8 @@
     <!-- Toast Notification Overlay -->
     <div id="toast-container" class="fixed top-5 right-5 z-50 flex flex-col gap-2 pointer-events-none"></div>
 
-    <!-- 1. LOGIN SCREEN SYSTEM (學生/老師帳戶登入系統) -->
-    <div id="login-screen" class="fixed inset-0 z-40 flex items-center justify-center bg-slate-900/80 backdrop-blur-md p-4">
-        <div class="glass-card bg-white rounded-3xl shadow-2xl p-8 max-w-md w-full border border-slate-100">
-            <div class="text-center mb-6">
-                <div class="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-sky-100 text-sky-600 text-4xl mb-3 shadow-inner">
-                    📖
-                </div>
-                <h1 class="text-2xl font-bold text-slate-800">中文學習與互動平臺</h1>
-                <p class="text-sm text-slate-500 mt-1">CTM Gamified Chinese Learning Portal</p>
-            </div>
-
-            <!-- Manual Account Login Form -->
-            <form onsubmit="event.preventDefault(); loginManually();" class="space-y-4">
-                <div>
-                    <label class="block text-xs font-semibold text-slate-600 uppercase mb-1">帳號 Username</label>
-                    <div class="relative">
-                        <i class="fa-solid fa-user absolute left-3 top-3 text-slate-400"></i>
-                        <input type="text" id="username-input" class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-sky-500 transition text-sm" placeholder="輸入帳號 (例如: admin_ctm 或 stu01)" required>
-                    </div>
-                </div>
-                <div>
-                    <label class="block text-xs font-semibold text-slate-600 uppercase mb-1">密碼 Password</label>
-                    <div class="relative">
-                        <i class="fa-solid fa-lock absolute left-3 top-3 text-slate-400"></i>
-                        <input type="password" id="password-input" class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-sky-500 transition text-sm" placeholder="預設密碼 123456" required value="123456">
-                    </div>
-                </div>
-                <button type="submit" class="w-full py-3 bg-sky-600 hover:bg-sky-700 text-white font-semibold rounded-xl shadow-lg shadow-sky-600/30 transition duration-200 active:scale-[0.98]">
-                    登入系統 Login
-                </button>
-            </form>
-
-            <div class="relative my-6 text-center">
-                <div class="absolute inset-0 flex items-center"><div class="w-full border-t border-slate-200"></div></div>
-                <span class="relative bg-white px-3 text-xs text-slate-400 font-medium">選擇身分快速登入</span>
-            </div>
-
-            <!-- Quick Demo Accounts Switcher -->
-            <div class="grid grid-cols-2 gap-2 text-xs">
-                <button onclick="quickLogin('admin_ctm')" class="p-2 border border-purple-200 bg-purple-50 hover:bg-purple-100 text-purple-700 rounded-lg text-left font-medium flex items-center justify-between">
-                    <span>👑 教師帳戶</span>
-                    <span class="text-[10px] bg-purple-200 px-1.5 py-0.5 rounded">admin_ctm</span>
-                </button>
-                <button onclick="quickLogin('stu01')" class="p-2 border border-slate-200 bg-slate-50 hover:bg-slate-100 text-slate-700 rounded-lg text-left font-medium flex items-center justify-between">
-                    <span>🎓 學生帳戶 01</span>
-                    <span class="text-[10px] bg-slate-200 px-1.5 py-0.5 rounded">stu01</span>
-                </button>
-                <button onclick="quickLogin('stu02')" class="p-2 border border-slate-200 bg-slate-50 hover:bg-slate-100 text-slate-700 rounded-lg text-left font-medium flex items-center justify-between">
-                    <span>📚 學生帳戶 02</span>
-                    <span class="text-[10px] bg-slate-200 px-1.5 py-0.5 rounded">stu02</span>
-                </button>
-                <button onclick="quickLogin('stu03')" class="p-2 border border-slate-200 bg-slate-50 hover:bg-slate-100 text-slate-700 rounded-lg text-left font-medium flex items-center justify-between">
-                    <span>✍️ 學生帳戶 03</span>
-                    <span class="text-[10px] bg-slate-200 px-1.5 py-0.5 rounded">stu03</span>
-                </button>
-            </div>
-            
-            <p class="text-center text-xs text-slate-400 mt-4">
-                <i class="fa-solid fa-shield-halved text-sky-500 mr-1"></i> 支援學生與教師雙權限切換
-            </p>
-        </div>
-    </div>
-
-    <!-- 2. MAIN DASHBOARD PAGE -->
-    <div id="dashboard" class="hidden flex-1 flex flex-col min-h-screen">
+    <!-- MAIN DASHBOARD PAGE (直接呈現，無須登入) -->
+    <div id="dashboard" class="flex-1 flex flex-col min-h-screen">
         
         <!-- Top Navigation Header -->
         <header class="bg-white/90 backdrop-blur-md border-b border-slate-200 sticky top-0 z-30 shadow-sm">
@@ -150,7 +87,7 @@
                         </div>
                         <div>
                             <h2 class="font-bold text-slate-800 leading-tight text-base sm:text-lg">中文學習與互動平臺</h2>
-                            <p class="text-[11px] text-slate-500 hidden sm:block">CTM Gamified Chinese Learning Platform</p>
+                            <p class="text-[11px] text-slate-500 hidden sm:block">Gamified Chinese Learning Platform</p>
                         </div>
                     </div>
 
@@ -159,8 +96,8 @@
                         
                         <!-- Current User Info Badge -->
                         <div class="hidden sm:flex items-center text-xs font-bold px-3 py-1 bg-slate-100 rounded-full border border-slate-200 text-slate-700">
-                            <span id="user-role-badge" class="mr-1.5 px-2 py-0.5 rounded-full text-[10px] text-white bg-sky-600">學生</span>
-                            <span id="user-name-display">載入中...</span>
+                            <span id="user-role-badge" class="mr-1.5 px-2 py-0.5 rounded-full text-[10px] text-white bg-purple-600">教師/學員</span>
+                            <span id="user-name-display">張國華 (教師)</span>
                         </div>
 
                         <!-- Equipped Pet & Dynamic Title -->
@@ -187,14 +124,9 @@
                         </div>
 
                         <!-- Teacher Admin Menu Button -->
-                        <button id="admin-menu" onclick="switchTab('admin')" class="hidden px-3 py-1.5 bg-purple-600 hover:bg-purple-700 text-white rounded-lg text-xs font-semibold shadow transition items-center gap-1">
+                        <button id="admin-menu" onclick="switchTab('admin')" class="flex px-3 py-1.5 bg-purple-600 hover:bg-purple-700 text-white rounded-lg text-xs font-semibold shadow transition items-center gap-1">
                             <i class="fa-solid fa-user-gear"></i>
                             <span class="hidden md:inline">管理員儀表板</span>
-                        </button>
-
-                        <!-- Logout Button -->
-                        <button onclick="logout()" class="p-2 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition" title="登出切換帳號">
-                            <i class="fa-solid fa-right-from-bracket"></i>
                         </button>
                     </div>
                 </div>
@@ -247,6 +179,11 @@
                     <a onclick="switchTab('leaderboard')" id="nav-leaderboard" class="nav-item flex items-center px-3 py-2.5 text-sm font-semibold rounded-xl text-slate-600 hover:bg-slate-100 transition cursor-pointer">
                         <i class="fa-solid fa-trophy w-6 text-center text-amber-400 mr-2"></i>
                         <span>榮譽排行榜</span>
+                    </a>
+
+                    <a onclick="switchTab('admin')" id="nav-admin" class="nav-item flex items-center px-3 py-2.5 text-sm font-semibold rounded-xl text-purple-700 hover:bg-purple-50 transition cursor-pointer">
+                        <i class="fa-solid fa-user-gear w-6 text-center text-purple-600 mr-2"></i>
+                        <span>教師管理控制台</span>
                     </a>
                 </nav>
             </aside>
@@ -447,7 +384,6 @@
                                         <button onclick="reshuffleTdGrid()" class="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg text-xs transition shadow-xs flex items-center gap-1">
                                             <i class="fa-solid fa-rotate-right"></i> 洗牌
                                         </button>
-                                        <!-- 改良點4: 已經徹底刪去「自動合成」按鈕 -->
                                     </div>
                                 </div>
 
@@ -509,10 +445,8 @@
                                 <div class="bg-white/80 p-2 rounded-lg border border-indigo-100">⚡ <b>風馳電掣</b>：雷擊防禦塔 (導電多個敵人)</div>
                                 <div class="bg-white/80 p-2 rounded-lg border border-indigo-100">🏹 <b>一箭雙雕</b>：雙發神弩塔 (同時攻擊雙目標)</div>
                                 <div class="bg-white/80 p-2 rounded-lg border border-indigo-100">🛡️ <b>破釜沉舟</b>：狂暴死士 (從塔位出戰至主幹道阻擋肉搏)</div>
-                                <!-- 改良點1: 說明更新 -->
                                 <div class="bg-white/80 p-2 rounded-lg border border-indigo-100">🐎 <b>萬馬奔騰</b>：騎兵衝鋒線 (定期從主城召喚騎兵逆向衝殺)</div>
                                 <div class="bg-white/80 p-2 rounded-lg border border-indigo-100">🎯 <b>百步穿楊</b>：狙擊神射手 (超遠程高額狙殺)</div>
-                                <!-- 改良點2: 說明更新 -->
                                 <div class="bg-white/80 p-2 rounded-lg border border-indigo-100">🐰 <b>守株待兔</b>：陷阱地雷 (顯形兔子地雷圖示，路經爆炸)</div>
                             </div>
                         </div>
@@ -609,7 +543,7 @@
                             <i class="fa-solid fa-user-shield text-2xl"></i>
                             <div>
                                 <h3 class="text-xl font-bold">教師管理控制台 (Admin Dashboard)</h3>
-                                <p class="text-xs text-purple-600">目前使用者身份：<b id="admin-user-name">張國華 (教師)</b></p>
+                                <p class="text-xs text-purple-600">目前權限身份：<b id="admin-user-name">張國華 (教師/最高權限)</b></p>
                             </div>
                         </div>
 
@@ -668,19 +602,19 @@
         const NOUNS = ["書童", "墨客", "秀才", "舉人", "貢士", "進士", "翰林", "狀元", "泰斗", "聖哲"];
         const PET_EMOJIS = ['🌱', '🌿', '📚', '✍️', '🦄', '🦅', '🎓', '📜', '🐉', '👑'];
 
-        // 學生與教師雙權限登入帳戶庫
+        // 預設帳戶資料庫 (已安全去化標籤)
         const SECURE_ACCOUNTS = {
-            "admin_ctm": { name: "張國華 (教師)", role: "teacher", score: 99999, coins: 99999, weeklyScore: 99999, emojis: ['👑', '🐉', '🎓'], equippedEmoji: '👑', items: [], bags: [], lastLogin: new Date().toLocaleString() },
-            "stu01": { name: "陳小明 (學生 01)", role: "student", score: 320, coins: 150, weeklyScore: 80, emojis: ['🌱', '🌿'], equippedEmoji: '🌱', items: [], bags: [], lastLogin: new Date().toLocaleString() },
-            "stu02": { name: "林雅婷 (學生 02)", role: "student", score: 580, coins: 240, weeklyScore: 120, emojis: ['🌱', '📚'], equippedEmoji: '📚', items: [], bags: [], lastLogin: new Date().toLocaleString() },
-            "stu03": { name: "黃子軒 (學生 03)", role: "student", score: 180, coins: 90, weeklyScore: 50, emojis: ['🌱'], equippedEmoji: '🌱', items: [], bags: [], lastLogin: new Date().toLocaleString() },
-            "stu04": { name: "張美琪 (學生 04)", role: "student", score: 920, coins: 410, weeklyScore: 210, emojis: ['🌱', '✍️'], equippedEmoji: '✍️', items: [], bags: [], lastLogin: new Date().toLocaleString() },
-            "stu05": { name: "李冠宇 (學生 05)", role: "student", score: 450, coins: 200, weeklyScore: 90, emojis: ['🌱'], equippedEmoji: '🌱', items: [], bags: [], lastLogin: new Date().toLocaleString() },
-            "stu06": { name: "王思涵 (學生 06)", role: "student", score: 1250, coins: 600, weeklyScore: 300, emojis: ['🌱', '🦄'], equippedEmoji: '🦄', items: [], bags: [], lastLogin: new Date().toLocaleString() },
-            "stu07": { name: "吳宗翰 (學生 07)", role: "student", score: 210, coins: 85, weeklyScore: 40, emojis: ['🌱'], equippedEmoji: '🌱', items: [], bags: [], lastLogin: new Date().toLocaleString() },
-            "stu08": { name: "蔡佩穎 (學生 08)", role: "student", score: 760, coins: 310, weeklyScore: 160, emojis: ['🌱', '🦅'], equippedEmoji: '🦅', items: [], bags: [], lastLogin: new Date().toLocaleString() },
-            "stu09": { name: "鄭宇翔 (學生 09)", role: "student", score: 390, coins: 170, weeklyScore: 95, emojis: ['🌱'], equippedEmoji: '🌱', items: [], bags: [], lastLogin: new Date().toLocaleString() },
-            "stu10": { name: "許嘉玲 (學生 10)", role: "student", score: 60, coins: 30, weeklyScore: 20, emojis: ['🌱'], equippedEmoji: '🌱', items: [], bags: [], lastLogin: new Date().toLocaleString() }
+            "admin_01": { name: "張國華 (教師)", role: "teacher", score: 1500, coins: 850, weeklyScore: 320, emojis: ['👑', '🐉', '🎓', '🌱'], equippedEmoji: '👑', items: [], bags: [] },
+            "stu01": { name: "陳小明 (學生 01)", role: "student", score: 320, coins: 150, weeklyScore: 80, emojis: ['🌱', '🌿'], equippedEmoji: '🌱', items: [], bags: [] },
+            "stu02": { name: "林雅婷 (學生 02)", role: "student", score: 580, coins: 240, weeklyScore: 120, emojis: ['🌱', '📚'], equippedEmoji: '📚', items: [], bags: [] },
+            "stu03": { name: "黃子軒 (學生 03)", role: "student", score: 180, coins: 90, weeklyScore: 50, emojis: ['🌱'], equippedEmoji: '🌱', items: [], bags: [] },
+            "stu04": { name: "張美琪 (學生 04)", role: "student", score: 920, coins: 410, weeklyScore: 210, emojis: ['🌱', '✍️'], equippedEmoji: '✍️', items: [], bags: [] },
+            "stu05": { name: "李冠宇 (學生 05)", role: "student", score: 450, coins: 200, weeklyScore: 90, emojis: ['🌱'], equippedEmoji: '🌱', items: [], bags: [] },
+            "stu06": { name: "王思涵 (學生 06)", role: "student", score: 1250, coins: 600, weeklyScore: 300, emojis: ['🌱', '🦄'], equippedEmoji: '🦄', items: [], bags: [] },
+            "stu07": { name: "吳宗翰 (學生 07)", role: "student", score: 210, coins: 85, weeklyScore: 40, emojis: ['🌱'], equippedEmoji: '🌱', items: [], bags: [] },
+            "stu08": { name: "蔡佩穎 (學生 08)", role: "student", score: 760, coins: 310, weeklyScore: 160, emojis: ['🌱', '🦅'], equippedEmoji: '🦅', items: [], bags: [] },
+            "stu09": { name: "鄭宇翔 (學生 09)", role: "student", score: 390, coins: 170, weeklyScore: 95, emojis: ['🌱'], equippedEmoji: '🌱', items: [], bags: [] },
+            "stu10": { name: "許嘉玲 (學生 10)", role: "student", score: 60, coins: 30, weeklyScore: 20, emojis: ['🌱'], equippedEmoji: '🌱', items: [], bags: [] }
         };
 
         const ARTICLES = [
@@ -752,8 +686,8 @@
            2. GLOBAL STATE & UTILITIES
            ========================================================================== */
         
-        let currentUserKey = null;
-        let currentUser = null;
+        let currentUserKey = "admin_01";
+        let currentUser = SECURE_ACCOUNTS["admin_01"];
         let readingTimer = null;
         let readingSeconds = 0;
         let userMemos = [];
@@ -823,61 +757,10 @@
         }
 
         /* ==========================================================================
-           3. AUTHENTICATION & DASHBOARD INIT (改良點3: 學生/教師登入系統)
+           3. DASHBOARD INITIALIZATION
            ========================================================================== */
 
-        function loginManually() {
-            const username = document.getElementById('username-input').value.trim();
-            if (SECURE_ACCOUNTS[username]) {
-                currentUserKey = username;
-                currentUser = SECURE_ACCOUNTS[username];
-            } else {
-                currentUserKey = username;
-                currentUser = {
-                    name: `${username} (學生)`,
-                    role: 'student',
-                    score: 0,
-                    coins: 50,
-                    weeklyScore: 0,
-                    emojis: ['🌱'],
-                    equippedEmoji: '🌱',
-                    items: [],
-                    bags: [],
-                    lastLogin: new Date().toLocaleString()
-                };
-                SECURE_ACCOUNTS[username] = currentUser;
-            }
-            initUserDashboard();
-        }
-
-        function quickLogin(username) {
-            document.getElementById('username-input').value = username;
-            loginManually();
-        }
-
-        function logout() {
-            clearInterval(readingTimer);
-            if (tdTimerInterval) clearInterval(tdTimerInterval);
-            if (tdSpawnInterval) clearInterval(tdSpawnInterval);
-            if (tdAnimId) cancelAnimationFrame(tdAnimId);
-            
-            document.getElementById('login-screen').classList.remove('hidden');
-            document.getElementById('dashboard').classList.add('hidden');
-            showToast('已安全登出系統', 'info');
-        }
-
         function initUserDashboard() {
-            document.getElementById('login-screen').classList.add('hidden');
-            document.getElementById('dashboard').classList.remove('hidden');
-
-            const adminBtn = document.getElementById('admin-menu');
-            if (currentUser.role === 'teacher') {
-                adminBtn.classList.remove('hidden');
-                adminBtn.classList.add('flex');
-            } else {
-                adminBtn.classList.add('hidden');
-            }
-
             updateUserUI();
             initArticlesSelect();
             loadArticle("art_01");
@@ -892,7 +775,7 @@
             userMemos = JSON.parse(localStorage.getItem(`memos_${currentUserKey}`) || '[]');
             renderMemos();
 
-            showToast(`歡迎登入系統，${currentUser.name}！`, 'success');
+            showToast(`歡迎進入中文學習與互動平臺！`, 'success');
         }
 
         function updateUserUI() {
@@ -906,16 +789,6 @@
             document.getElementById('user-title-badge').innerText = stats.title;
 
             document.getElementById('user-name-display').innerText = currentUser.name;
-            const roleBadge = document.getElementById('user-role-badge');
-            if (roleBadge) {
-                if (currentUser.role === 'teacher') {
-                    roleBadge.innerText = '教師';
-                    roleBadge.className = 'mr-1.5 px-2 py-0.5 rounded-full text-[10px] text-white bg-purple-600 font-bold';
-                } else {
-                    roleBadge.innerText = '學生';
-                    roleBadge.className = 'mr-1.5 px-2 py-0.5 rounded-full text-[10px] text-white bg-sky-600 font-bold';
-                }
-            }
 
             document.getElementById('big-pet-emoji').innerText = stats.petEmoji;
             document.getElementById('current-title-full').innerText = `Lv.${stats.level} ${stats.title}`;
@@ -1140,7 +1013,7 @@
                 document.getElementById(`match-left-${index}`).classList.add('ring-2', 'ring-sky-500', 'bg-sky-100');
             } else {
                 if (selectedRight !== null) {
-                    document.getElementById(`match-right-${selectedRight}`).classList.remove('ring-2', 'ring-sky-500', 'bg-sky-100');
+                    document.getElementById(`match-right-${selectedRight.index}`).classList.remove('ring-2', 'ring-sky-500', 'bg-sky-100');
                 }
                 selectedRight = { index, def: defVal };
                 document.getElementById(`match-right-${index}`).classList.add('ring-2', 'ring-sky-500', 'bg-sky-100');
@@ -1225,7 +1098,7 @@
         }
 
         /* ==========================================================================
-           6. IDIOM SYNTHESIS TOWER DEFENSE MODULE (改良點1:騎兵主城出發, 改良點2:兔子地雷)
+           6. IDIOM SYNTHESIS TOWER DEFENSE MODULE
            ========================================================================== */
 
         const IDIOM_RECIPES = {
@@ -1234,17 +1107,15 @@
             "風馳電掣": { name: "雷擊防禦塔", type: "tower", icon: "⚡", color: "#eab308", range: 160, damage: 55, fireRate: 85, chainTargets: 3, desc: "連環高壓導電，可一次接連電擊多個敵軍" },
             "一箭雙雕": { name: "雙發神弩塔", type: "tower", icon: "🏹", color: "#d97706", range: 160, damage: 35, fireRate: 30, multiTarget: 2, desc: "可同時對兩個敵軍目標射出飛箭" },
             "破釜沉舟": { name: "狂暴死士隊", type: "defender", icon: "🛡️", color: "#dc2626", hp: 300, damage: 35, desc: "從塔位出戰至主幹道實體阻擋並肉搏敵軍" },
-            // 改良點1: 萬馬奔騰定期從主城出發衝殺
             "萬馬奔騰": { name: "騎兵衝鋒線", type: "spawner", icon: "🐎", color: "#7c3aed", spawnCooldown: 180, damage: 60, desc: "定期從主城召喚騎兵隊沿路逆向衝殺敵軍" },
             "百步穿楊": { name: "狙擊神射手", type: "tower", icon: "🎯", color: "#2563eb", range: 220, damage: 110, fireRate: 85, desc: "超遠程精準狙擊，單發傷害巨大" },
-            // 改良點2: 守株待兔地雷改為兔子圖示 🐰
             "守株待兔": { name: "陷阱地雷", type: "trap", icon: "🐰", color: "#f59e0b", range: 80, aoeRadius: 120, damage: 250, desc: "敵軍路經兔子地雷時引爆，毀滅周圍敵軍" }
         };
 
         const ALL_IDIOM_LIST = Object.keys(IDIOM_RECIPES);
         const ALL_IDIOM_CHARS = Array.from(new Set(ALL_IDIOM_LIST.join('').split('')));
 
-        let tdGrid = Array(25).fill(null); // 5x5 Grid
+        let tdGrid = Array(25).fill(null);
         let idiomRotationIndex = 0;
         let selectedBuffer = [];
         let unlockedCards = [];
@@ -1269,7 +1140,7 @@
             { x: 0.35, y: 0.75 },
             { x: 0.70, y: 0.75 },
             { x: 0.70, y: 0.45 },
-            { x: 0.90, y: 0.45 } // 主城位置 (最後節點)
+            { x: 0.90, y: 0.45 }
         ];
 
         const TOWER_SLOTS = [
@@ -1362,7 +1233,6 @@
                 tdGrid = Array(25).fill(null);
                 let emptyIndices = Array.from({ length: 25 }, (_, i) => i);
 
-                // 隨機選擇包含「守株待兔」、「萬馬奔騰」在內的三組成語填充
                 for (let count = 0; count < 3; count++) {
                     const currentIdiom = ALL_IDIOM_LIST[(idiomRotationIndex + count) % ALL_IDIOM_LIST.length];
                     const idiomChars = currentIdiom.split('');
@@ -1852,27 +1722,25 @@
                     tdCtx.fillText(`${Math.ceil(slot.tower.remainingTime)}s`, sx, sy + 30);
 
                     if (!isGameOver) {
-                        // 改良點1: 「萬馬奔騰」從主城出發衝殺
                         if (slot.tower.type === 'spawner') {
                             slot.tower.lastFired = (slot.tower.lastFired || 0) + 1;
                             const spawnCd = slot.tower.spawnCooldown || 180;
                             if (slot.tower.lastFired >= spawnCd) {
                                 slot.tower.lastFired = 0;
-                                // 召喚騎兵隊從主城 (最後節點) 開始逆向衝殺
                                 cavalryCharges.push({
                                     id: Date.now() + Math.random(),
                                     nodeIndex: lastNodeIdx,
                                     nodeProgress: 0,
-                                    speed: 0.015, // 騎兵快度衝鋒
+                                    speed: 0.015,
                                     damage: slot.tower.damage || 60,
                                     x: MAP_PATH_NODES[lastNodeIdx].x,
                                     y: MAP_PATH_NODES[lastNodeIdx].y,
-                                    hitMonsters: new Set()
+                                    hitMonsters: new Set(),
+                                    finished: false
                                 });
                                 showToast(`🐎 萬馬奔騰！騎兵隊從主城火速發動衝鋒逆向衝殺敵軍！`, 'info');
                             }
                         }
-                        // 改良點2: 「守株待兔」地雷兔子圖案 🐰 與引爆
                         else if (slot.tower.type === 'trap') {
                             tdCtx.save();
                             tdCtx.beginPath();
@@ -1954,269 +1822,204 @@
                     tdCtx.arc(sx, sy, 16, 0, Math.PI * 2);
                     tdCtx.stroke();
                     tdCtx.setLineDash([]);
-
-                    tdCtx.fillStyle = "#94a3b8";
-                    tdCtx.font = "10px sans-serif";
-                    tdCtx.fillText("空塔位", sx, sy);
                 }
             });
 
-            // Update & Render Cavalry Charges (改良點1: 從主城逆向衝殺)
-            if (!isGameOver) {
-                for (let i = cavalryCharges.length - 1; i >= 0; i--) {
-                    const cav = cavalryCharges[i];
-                    
-                    // 逆向移動邏輯 (從 nodeIndex 往 nodeIndex - 1 移動)
-                    const currNode = MAP_PATH_NODES[cav.nodeIndex];
-                    const prevNode = MAP_PATH_NODES[cav.nodeIndex - 1];
-
-                    if (!prevNode) {
-                        cavalryCharges.splice(i, 1);
-                        continue;
-                    }
-
-                    cav.nodeProgress += cav.speed;
-                    if (cav.nodeProgress >= 1) {
-                        cav.nodeProgress = 0;
-                        cav.nodeIndex--;
-                    }
-
-                    const cCurrNode = MAP_PATH_NODES[cav.nodeIndex];
-                    const cPrevNode = MAP_PATH_NODES[cav.nodeIndex - 1];
-                    if (cPrevNode) {
-                        cav.x = cCurrNode.x + (cPrevNode.x - cCurrNode.x) * cav.nodeProgress;
-                        cav.y = cCurrNode.y + (cPrevNode.y - cCurrNode.y) * cav.nodeProgress;
-                    } else {
-                        cavalryCharges.splice(i, 1);
-                        continue;
-                    }
-
-                    const cx = cav.x * w;
-                    const cy = cav.y * h;
-
-                    // 繪製衝鋒騎兵圖案與氣浪
-                    tdCtx.font = "22px sans-serif";
-                    tdCtx.textAlign = "center";
-                    tdCtx.fillText("🐎🐎", cx, cy);
-
-                    tdCtx.beginPath();
-                    tdCtx.arc(cx, cy, 28, 0, Math.PI * 2);
-                    tdCtx.strokeStyle = "rgba(124, 58, 237, 0.7)";
-                    tdCtx.lineWidth = 3;
-                    tdCtx.stroke();
-
-                    // 撞擊沿途敵人
-                    monsters.forEach(m => {
-                        const dist = Math.hypot(m.x * w - cx, m.y * h - cy);
-                        if (dist < 38 && !cav.hitMonsters.has(m.id)) {
-                            m.hp -= cav.damage;
-                            cav.hitMonsters.add(m.id);
-                            
-                            explosions.push({
-                                x: m.x * w, y: m.y * h - 10,
-                                radius: 5, maxRadius: 22, alpha: 0.8, color: "#a855f7"
-                            });
-                        }
-                    });
-                }
-            }
-
-            // Update & Render Explosions Effect
-            for (let i = explosions.length - 1; i >= 0; i--) {
-                const exp = explosions[i];
-                exp.radius += (exp.maxRadius - exp.radius) * 0.25;
-                exp.alpha -= 0.04;
-
-                if (exp.alpha <= 0) {
-                    explosions.splice(i, 1);
-                    continue;
-                }
-
-                tdCtx.save();
-                tdCtx.globalAlpha = Math.max(0, exp.alpha);
-                tdCtx.beginPath();
-                tdCtx.arc(exp.x, exp.y, exp.radius, 0, Math.PI * 2);
-                tdCtx.fillStyle = exp.color || "rgba(249, 115, 22, 0.35)";
-                tdCtx.fill();
-                tdCtx.strokeStyle = "#ef4444";
-                tdCtx.lineWidth = 2;
-                tdCtx.stroke();
-                tdCtx.restore();
-            }
-
-            // Update & Render Chain Lightning Effect
-            for (let i = lightningChains.length - 1; i >= 0; i--) {
-                const lc = lightningChains[i];
-                lc.life--;
-
-                if (lc.life <= 0) {
-                    lightningChains.splice(i, 1);
-                    continue;
-                }
-
-                tdCtx.save();
-                tdCtx.strokeStyle = "#facc15";
-                tdCtx.lineWidth = 3;
-                tdCtx.shadowColor = "#fef08a";
-                tdCtx.shadowBlur = 8;
-                tdCtx.beginPath();
-                tdCtx.moveTo(lc.startX, lc.startY);
-                lc.targets.forEach(t => tdCtx.lineTo(t.x, t.y));
-                tdCtx.stroke();
-                tdCtx.restore();
-            }
-
-            // Update & Render Projectiles
-            for (let i = projectiles.length - 1; i >= 0; i--) {
-                const proj = projectiles[i];
-                proj.progress += 0.08;
-
-                const px = proj.x + (proj.targetX - proj.x) * proj.progress;
-                const py = proj.y + (proj.targetY - proj.y) * proj.progress;
-
-                tdCtx.fillStyle = proj.color || "#38bdf8";
-                tdCtx.beginPath();
-                tdCtx.arc(px, py, 4, 0, Math.PI * 2);
-                tdCtx.fill();
-
-                if (proj.progress >= 1) {
-                    if (proj.targetMonster) {
-                        proj.targetMonster.hp -= proj.damage;
-                        if (proj.slow) {
-                            proj.targetMonster.slowTimer = 60;
-                        }
-                    }
-                    projectiles.splice(i, 1);
-                }
-            }
-
-            // Update & Render Warriors (破釜沉舟)
-            for (let i = activeWarriors.length - 1; i >= 0; i--) {
-                const warrior = activeWarriors[i];
+            // Update & Render Active Warriors (狂暴死士)
+            activeWarriors.forEach((warrior) => {
                 const wx = warrior.x * w;
                 const wy = warrior.y * h;
 
                 tdCtx.fillStyle = "#dc2626";
                 tdCtx.beginPath();
-                tdCtx.arc(wx, wy, 14, 0, Math.PI * 2);
+                tdCtx.arc(wx, wy, 12, 0, Math.PI * 2);
                 tdCtx.fill();
                 tdCtx.strokeStyle = "#fca5a5";
-                tdCtx.lineWidth = 2;
-                tdCtx.stroke();
-
-                tdCtx.font = "14px sans-serif";
-                tdCtx.fillText(warrior.icon, wx, wy);
-
-                const wHpPct = Math.max(0, warrior.hp / warrior.maxHp);
-                tdCtx.fillStyle = "#ef4444";
-                tdCtx.fillRect(wx - 12, wy - 22, 24 * wHpPct, 4);
-
-                if (!isGameOver) {
-                    const nearbyMonster = monsters.find(m => Math.hypot(m.x * w - wx, m.y * h - wy) <= 25);
-                    if (nearbyMonster) {
-                        nearbyMonster.isBlocked = true;
-                        warrior.attackCooldown = (warrior.attackCooldown || 0) + 1;
-                        if (warrior.attackCooldown >= 30) {
-                            warrior.attackCooldown = 0;
-                            nearbyMonster.hp -= warrior.damage;
-                            warrior.hp -= 20;
-                        }
-                    }
-                }
-
-                if (warrior.hp <= 0) {
-                    showToast(`🛡️ 狂暴死士英勇戰死沙場！`, 'info');
-                    activeWarriors.splice(i, 1);
-                }
-            }
-
-            // Update & Render Monsters
-            for (let i = monsters.length - 1; i >= 0; i--) {
-                const m = monsters[i];
-                
-                if (!isGameOver) {
-                    let effSpeed = m.speed;
-                    if (m.slowTimer > 0) {
-                        m.slowTimer--;
-                        effSpeed *= 0.5;
-                    }
-
-                    if (!m.isBlocked) {
-                        const currNode = MAP_PATH_NODES[m.nodeIndex];
-                        const nextNode = MAP_PATH_NODES[m.nodeIndex + 1];
-
-                        if (nextNode) {
-                            m.nodeProgress += effSpeed;
-                            if (m.nodeProgress >= 1) {
-                                m.nodeProgress = 0;
-                                m.nodeIndex++;
-                            }
-
-                            const newCurr = MAP_PATH_NODES[m.nodeIndex];
-                            const newNext = MAP_PATH_NODES[m.nodeIndex + 1];
-                            if (newNext) {
-                                m.x = newCurr.x + (newNext.x - newCurr.x) * m.nodeProgress;
-                                m.y = newCurr.y + (newNext.y - newCurr.y) * m.nodeProgress;
-                            } else {
-                                // 抵達主城
-                                tdBaseHP -= 15;
-                                updateTdHeaderUI();
-                                monsters.splice(i, 1);
-
-                                if (tdBaseHP <= 0) {
-                                    triggerGameOver();
-                                    break;
-                                }
-                                continue;
-                            }
-                        }
-                    }
-                    m.isBlocked = false;
-                }
-
-                const mx = m.x * w;
-                const my = m.y * h;
-
-                tdCtx.fillStyle = "#991b1b";
-                tdCtx.beginPath();
-                tdCtx.arc(mx, my, 12, 0, Math.PI * 2);
-                tdCtx.fill();
-                tdCtx.strokeStyle = "#f87171";
                 tdCtx.lineWidth = 1.5;
                 tdCtx.stroke();
 
                 tdCtx.font = "11px sans-serif";
+                tdCtx.fillText(warrior.icon, wx, wy);
+
+                if (!isGameOver) {
+                    const enemyNearby = monsters.find(m => Math.hypot(m.x * w - wx, m.y * h - wy) <= 30);
+                    if (enemyNearby) {
+                        enemyNearby.isBlocked = true;
+                        warrior.attackCooldown = (warrior.attackCooldown || 0) + 1;
+                        if (warrior.attackCooldown >= 30) {
+                            warrior.attackCooldown = 0;
+                            enemyNearby.hp -= warrior.damage;
+                            warrior.hp -= 15;
+                        }
+                    }
+                }
+
+                const wHpRatio = Math.max(0, warrior.hp / warrior.maxHp);
+                tdCtx.fillStyle = "#0f172a";
+                tdCtx.fillRect(wx - 15, wy - 18, 30, 4);
+                tdCtx.fillStyle = "#ef4444";
+                tdCtx.fillRect(wx - 15, wy - 18, 30 * wHpRatio, 4);
+            });
+            activeWarriors = activeWarriors.filter(wUnit => wUnit.hp > 0);
+
+            // Update & Render Cavalry Charges (萬馬奔騰逆向衝殺)
+            cavalryCharges.forEach((cavalry) => {
+                let currNodeIdx = cavalry.nodeIndex;
+                let nextNodeIdx = currNodeIdx - 1;
+
+                if (nextNodeIdx >= 0) {
+                    cavalry.nodeProgress += cavalry.speed;
+                    const p1 = MAP_PATH_NODES[currNodeIdx];
+                    const p2 = MAP_PATH_NODES[nextNodeIdx];
+
+                    cavalry.x = p1.x + (p2.x - p1.x) * cavalry.nodeProgress;
+                    cavalry.y = p1.y + (p2.y - p1.y) * cavalry.nodeProgress;
+
+                    if (cavalry.nodeProgress >= 1.0) {
+                        cavalry.nodeIndex = nextNodeIdx;
+                        cavalry.nodeProgress = 0;
+                        if (cavalry.nodeIndex === 0) {
+                            cavalry.finished = true;
+                        }
+                    }
+                } else {
+                    cavalry.finished = true;
+                }
+
+                const cx = cavalry.x * w;
+                const cy = cavalry.y * h;
+
+                tdCtx.fillStyle = "#7c3aed";
+                tdCtx.beginPath();
+                tdCtx.arc(cx, cy, 14, 0, Math.PI * 2);
+                tdCtx.fill();
+                tdCtx.strokeStyle = "#c084fc";
+                tdCtx.lineWidth = 2;
+                tdCtx.stroke();
+
+                tdCtx.font = "13px sans-serif";
+                tdCtx.fillText("🐎", cx, cy);
+
+                monsters.forEach(m => {
+                    const dist = Math.hypot(m.x * w - cx, m.y * h - cy);
+                    if (dist <= 35 && !cavalry.hitMonsters.has(m.id)) {
+                        cavalry.hitMonsters.add(m.id);
+                        m.hp -= cavalry.damage;
+                    }
+                });
+            });
+            cavalryCharges = cavalryCharges.filter(c => !c.finished);
+
+            // Update & Render Monsters
+            monsters.forEach((m) => {
+                if (!isGameOver && !m.isBlocked) {
+                    let moveSpeed = m.slowTimer > 0 ? m.speed * 0.5 : m.speed;
+                    if (m.slowTimer > 0) m.slowTimer--;
+
+                    m.nodeProgress += moveSpeed;
+                    const p1 = MAP_PATH_NODES[m.nodeIndex];
+                    const p2 = MAP_PATH_NODES[m.nodeIndex + 1];
+
+                    if (p1 && p2) {
+                        m.x = p1.x + (p2.x - p1.x) * m.nodeProgress;
+                        m.y = p1.y + (p2.y - p1.y) * m.nodeProgress;
+
+                        if (m.nodeProgress >= 1.0) {
+                            m.nodeIndex++;
+                            m.nodeProgress = 0;
+                            if (m.nodeIndex >= MAP_PATH_NODES.length - 1) {
+                                tdBaseHP -= 15;
+                                if (tdBaseHP <= 0) {
+                                    triggerGameOver();
+                                }
+                                m.hp = -999; // Marked for removal
+                            }
+                        }
+                    }
+                }
+
+                m.isBlocked = false;
+
+                const mx = m.x * w;
+                const my = m.y * h;
+
+                tdCtx.fillStyle = "#e11d48";
+                tdCtx.beginPath();
+                tdCtx.arc(mx, my, 11, 0, Math.PI * 2);
+                tdCtx.fill();
+                tdCtx.strokeStyle = "#fda4af";
+                tdCtx.lineWidth = 1.5;
+                tdCtx.stroke();
+
+                tdCtx.font = "10px sans-serif";
+                tdCtx.fillStyle = "#ffffff";
                 tdCtx.fillText("👾", mx, my);
 
-                const mHpPct = Math.max(0, m.hp / m.maxHp);
-                tdCtx.fillStyle = "#ef4444";
-                tdCtx.fillRect(mx - 10, my - 18, 20 * mHpPct, 3);
+                const mHpRatio = Math.max(0, m.hp / m.maxHp);
+                tdCtx.fillStyle = "#0f172a";
+                tdCtx.fillRect(mx - 12, my - 16, 24, 3);
+                tdCtx.fillStyle = "#22c55e";
+                tdCtx.fillRect(mx - 12, my - 16, 24 * mHpRatio, 3);
+            });
 
-                if (m.hp <= 0) {
-                    tdEnergy += 15;
-                    updateTdHeaderUI();
-                    monsters.splice(i, 1);
+            monsters = monsters.filter(m => m.hp > 0);
+
+            // Render Projectiles
+            projectiles.forEach(p => {
+                p.progress += 0.15;
+                const currX = p.x + (p.targetX - p.x) * p.progress;
+                const currY = p.y + (p.targetY - p.y) * p.progress;
+
+                tdCtx.fillStyle = p.color || "#38bdf8";
+                tdCtx.beginPath();
+                tdCtx.arc(currX, currY, 4, 0, Math.PI * 2);
+                tdCtx.fill();
+
+                if (p.progress >= 1.0) {
+                    if (p.targetMonster && p.targetMonster.hp > 0) {
+                        p.targetMonster.hp -= p.damage;
+                        if (p.slow) p.targetMonster.slowTimer = 60;
+                    }
                 }
-            }
+            });
+            projectiles = projectiles.filter(p => p.progress < 1.0);
 
-            // Game Over Mask & Retry Text
-            if (isGameOver) {
-                tdCtx.fillStyle = "rgba(15, 23, 42, 0.75)";
-                tdCtx.fillRect(0, 0, w, h);
+            // Render Lightning Chains
+            lightningChains.forEach(lc => {
+                lc.life--;
+                tdCtx.beginPath();
+                tdCtx.strokeStyle = "#facc15";
+                tdCtx.lineWidth = 3;
+                let lastX = lc.startX;
+                let lastY = lc.startY;
+                lc.targets.forEach(t => {
+                    tdCtx.moveTo(lastX, lastY);
+                    tdCtx.lineTo(t.x, t.y);
+                    lastX = t.x;
+                    lastY = t.y;
+                });
+                tdCtx.stroke();
+            });
+            lightningChains = lightningChains.filter(lc => lc.life > 0);
 
-                tdCtx.font = "bold 28px sans-serif";
-                tdCtx.fillStyle = "#f87171";
-                tdCtx.textAlign = "center";
-                tdCtx.fillText("💀 GAME OVER · 主城陷落", w / 2, h / 2 - 15);
+            // Render Explosions
+            explosions.forEach(exp => {
+                exp.radius += 4;
+                exp.alpha -= 0.04;
 
-                tdCtx.font = "bold 14px sans-serif";
-                tdCtx.fillStyle = "#fef08a";
-                tdCtx.fillText("請按「開始戰鬥 / 下一波」重開戰局！", w / 2, h / 2 + 25);
-            }
+                tdCtx.save();
+                tdCtx.beginPath();
+                tdCtx.arc(exp.x, exp.y, exp.radius, 0, Math.PI * 2);
+                tdCtx.fillStyle = exp.color || "#f97316";
+                tdCtx.globalAlpha = Math.max(0, exp.alpha);
+                tdCtx.fill();
+                tdCtx.restore();
+            });
+            explosions = explosions.filter(exp => exp.alpha > 0);
         }
 
         /* ==========================================================================
-           7. TABLES, SHOP & ADMIN FUNCTIONS
+           7. TABLES & ADMIN RENDER FUNCTIONS
            ========================================================================== */
 
         function renderLevelTable() {
@@ -2225,23 +2028,18 @@
 
             let html = '';
             for (let lv = 1; lv <= 100; lv++) {
-                let pIdx = Math.min(Math.floor((lv - 1) / 10), 9);
-                let nIdx = (lv - 1) % 10;
-                let pref = PREFIXES[pIdx];
-                let noun = NOUNS[nIdx];
-                let pet = PET_EMOJIS[pIdx];
-                let scoreReq = 20 * Math.pow(lv - 1, 2);
+                let stats = calculateLevelAndTitle(20 * Math.pow(lv - 1, 2));
+                if (lv === 100) stats.nextReqScore = 196020;
 
-                let isCurrent = (currentUser && calculateLevelAndTitle(currentUser.score).level === lv);
-
+                const isCurrent = (calculateLevelAndTitle(currentUser.score).level === lv);
                 html += `
-                    <tr class="${isCurrent ? 'bg-amber-100/80 font-bold text-amber-900' : 'hover:bg-slate-50'}">
+                    <tr class="${isCurrent ? 'bg-sky-50 font-bold text-sky-900 border-l-4 border-l-sky-500' : 'hover:bg-slate-50'}">
                         <td class="p-3">Lv.${lv}</td>
-                        <td class="p-3 text-lg">${pet}</td>
-                        <td class="p-3">${pref}</td>
-                        <td class="p-3">${noun}</td>
-                        <td class="p-3 font-semibold text-sky-700">${pref}${noun}</td>
-                        <td class="p-3 font-mono">${scoreReq.toLocaleString()} 分</td>
+                        <td class="p-3 text-lg">${stats.petEmoji}</td>
+                        <td class="p-3">${stats.prefix}</td>
+                        <td class="p-3">${stats.noun}</td>
+                        <td class="p-3">${stats.title}</td>
+                        <td class="p-3 font-mono text-slate-500">${(20 * Math.pow(lv - 1, 2)).toLocaleString()} 分</td>
                     </tr>
                 `;
             }
@@ -2252,80 +2050,88 @@
             const grid = document.getElementById('shop-items-grid');
             if (!grid) return;
 
-            const items = [
-                { id: "e1", name: "神獸靈龍", emoji: "🐉", price: 300 },
-                { id: "e2", name: "百獸之王", emoji: "🦁", price: 200 },
-                { id: "e3", name: "九天鳳凰", emoji: "🦅", price: 250 },
-                { id: "e4", name: "文曲皇冠", emoji: "👑", price: 500 }
+            const shopItems = [
+                { emoji: '🐉', name: '神龍頭像', cost: 100 },
+                { emoji: '👑', name: '帝皇寶冠', cost: 200 },
+                { emoji: '🦅', name: '神鷹之翼', cost: 150 },
+                { emoji: '🦄', name: '獨角幻獸', cost: 120 },
+                { emoji: '🎓', name: '學士帽', cost: 80 },
+                { emoji: '📜', name: '竹簡密卷', cost: 60 }
             ];
 
-            grid.innerHTML = items.map(item => {
-                const isUnlocked = currentUser.emojis.includes(item.emoji);
+            grid.innerHTML = shopItems.map(item => {
+                const isOwned = currentUser.emojis && currentUser.emojis.includes(item.emoji);
                 const isEquipped = currentUser.equippedEmoji === item.emoji;
 
                 return `
-                    <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4 text-center space-y-3 hover:shadow-md transition">
-                        <div class="text-4xl py-2">${item.emoji}</div>
+                    <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4 text-center flex flex-col items-center justify-between space-y-3">
+                        <div class="text-4xl hover:scale-110 transition cursor-pointer">${item.emoji}</div>
                         <div>
-                            <h4 class="font-bold text-sm text-slate-800">${item.name}</h4>
-                            <p class="text-xs text-amber-600 font-bold mt-0.5"><i class="fa-solid fa-coins mr-1"></i>${item.price} 金幣</p>
+                            <div class="font-bold text-sm text-slate-800">${item.name}</div>
+                            <div class="text-xs text-amber-600 font-semibold mt-0.5"><i class="fa-solid fa-coins mr-1"></i>${item.cost} 幣</div>
                         </div>
-                        ${
-                            isEquipped 
-                            ? `<button class="w-full py-1.5 bg-emerald-600 text-white rounded-xl text-xs font-bold pointer-events-none">佩戴中</button>`
-                            : isUnlocked 
-                            ? `<button onclick="equipEmoji('${item.emoji}')" class="w-full py-1.5 bg-sky-600 hover:bg-sky-700 text-white rounded-xl text-xs font-bold transition">裝備</button>`
-                            : `<button onclick="buyShopItem('${item.emoji}', ${item.price})" class="w-full py-1.5 bg-amber-500 hover:bg-amber-600 text-white rounded-xl text-xs font-bold transition">購買解鎖</button>`
-                        }
+                        ${isEquipped ? `
+                            <button class="w-full py-1.5 bg-emerald-500 text-white rounded-xl text-xs font-bold pointer-events-none">已佩戴</button>
+                        ` : isOwned ? `
+                            <button onclick="equipEmoji('${item.emoji}')" class="w-full py-1.5 bg-sky-600 hover:bg-sky-700 text-white rounded-xl text-xs font-bold transition">佩戴頭像</button>
+                        ` : `
+                            <button onclick="buyEmoji('${item.emoji}', ${item.cost})" class="w-full py-1.5 bg-amber-500 hover:bg-amber-600 text-white rounded-xl text-xs font-bold transition">購買解鎖</button>
+                        `}
                     </div>
                 `;
             }).join('');
-        }
-
-        function buyShopItem(emoji, price) {
-            if (currentUser.coins < price) {
-                showToast('金幣不足，無法購買！', 'warning');
-                return;
-            }
-            currentUser.coins -= price;
-            currentUser.emojis.push(emoji);
-            currentUser.equippedEmoji = emoji;
-            updateUserUI();
-            renderShop();
-            showToast(`成功購買並裝備 ${emoji}！`, 'success');
         }
 
         function equipEmoji(emoji) {
             currentUser.equippedEmoji = emoji;
             updateUserUI();
             renderShop();
-            showToast(`已替換頭像外觀為 ${emoji}`, 'success');
+            showToast(`已佩戴 ${emoji} 頭像！`, 'success');
+        }
+
+        function buyEmoji(emoji, cost) {
+            if (currentUser.coins < cost) {
+                showToast('金幣不足，快去閱讀或答題賺取金幣吧！', 'warning');
+                return;
+            }
+            currentUser.coins -= cost;
+            if (!currentUser.emojis) currentUser.emojis = [];
+            currentUser.emojis.push(emoji);
+            currentUser.equippedEmoji = emoji;
+            updateUserUI();
+            renderShop();
+            showToast(`成功解鎖 ${emoji} ！`, 'success');
         }
 
         function renderLeaderboard() {
             const tbody = document.getElementById('leaderboard-body');
             if (!tbody) return;
 
-            const sortedUsers = Object.values(SECURE_ACCOUNTS).sort((a, b) => b.score - a.score);
+            const sorted = Object.keys(SECURE_ACCOUNTS).map(key => ({
+                key,
+                ...SECURE_ACCOUNTS[key]
+            })).sort((a, b) => b.score - a.score);
 
-            tbody.innerHTML = sortedUsers.map((u, rank) => {
-                const stats = calculateLevelAndTitle(u.score);
-                const rankBadge = rank === 0 ? '🥇' : rank === 1 ? '🥈' : rank === 2 ? '🥉' : `${rank + 1}`;
+            tbody.innerHTML = sorted.map((acc, index) => {
+                const stats = calculateLevelAndTitle(acc.score);
+                const rankBadge = index === 0 ? '🥇' : index === 1 ? '🥈' : index === 2 ? '🥉' : `${index + 1}`;
+                const isMe = acc.key === currentUserKey;
+
                 return `
-                    <tr class="hover:bg-slate-50 transition ${u.name === currentUser.name ? 'bg-sky-50/80 font-bold' : ''}">
+                    <tr class="${isMe ? 'bg-sky-50/80 font-bold' : 'hover:bg-slate-50'}">
                         <td class="p-3 text-center text-base">${rankBadge}</td>
-                        <td class="p-3 font-bold text-slate-800 flex items-center gap-2">
-                            <span>${u.equippedEmoji || stats.petEmoji}</span>
-                            <span>${u.name}</span>
+                        <td class="p-3 flex items-center space-x-2">
+                            <span class="text-xl">${acc.equippedEmoji || stats.petEmoji}</span>
+                            <span>${acc.name}</span>
                         </td>
                         <td class="p-3">
-                            <span class="text-[10px] px-2 py-0.5 rounded-full ${u.role === 'teacher' ? 'bg-purple-100 text-purple-700 font-bold' : 'bg-slate-100 text-slate-600'}">
-                                ${u.role === 'teacher' ? '教師' : '學生'}
+                            <span class="px-2 py-0.5 rounded-full text-[10px] text-white ${acc.role === 'teacher' ? 'bg-purple-600' : 'bg-sky-600'}">
+                                ${acc.role === 'teacher' ? '教師' : '學員'}
                             </span>
                         </td>
-                        <td class="p-3 text-sky-700">Lv.${stats.level} ${stats.title}</td>
-                        <td class="p-3 font-mono font-bold text-amber-600">${u.score.toLocaleString()}</td>
-                        <td class="p-3 font-mono text-emerald-600">+${u.weeklyScore.toLocaleString()}</td>
+                        <td class="p-3 font-medium">Lv.${stats.level} ${stats.title}</td>
+                        <td class="p-3 font-mono font-bold text-sky-700">${acc.score.toLocaleString()}</td>
+                        <td class="p-3 font-mono text-amber-600">+${acc.weeklyScore.toLocaleString()}</td>
                     </tr>
                 `;
             }).join('');
@@ -2335,32 +2141,33 @@
             const tbody = document.getElementById('admin-student-table');
             if (!tbody) return;
 
-            tbody.innerHTML = Object.entries(SECURE_ACCOUNTS).map(([key, acc]) => `
-                <tr class="hover:bg-purple-50/50">
-                    <td class="p-2.5 font-mono text-purple-900">${key}</td>
-                    <td class="p-2.5 font-bold">${acc.name}</td>
-                    <td class="p-2.5 font-mono text-amber-600">${acc.score}</td>
-                    <td class="p-2.5 font-mono text-emerald-600">${acc.coins}</td>
-                    <td class="p-2.5">${acc.emojis.join(' ')}</td>
-                    <td class="p-2.5 space-x-1">
-                        <button onclick="adminRewardSingle('${key}')" class="px-2 py-1 bg-purple-600 text-white rounded text-[10px] font-bold">+50分</button>
-                    </td>
-                </tr>
-            `).join('');
+            tbody.innerHTML = Object.keys(SECURE_ACCOUNTS).map(key => {
+                const acc = SECURE_ACCOUNTS[key];
+                return `
+                    <tr class="hover:bg-purple-50/50">
+                        <td class="p-2.5 font-mono text-slate-500">${key}</td>
+                        <td class="p-2.5 font-semibold text-slate-800">${acc.name}</td>
+                        <td class="p-2.5 font-mono text-sky-700">${acc.score}</td>
+                        <td class="p-2.5 font-mono text-amber-600">${acc.coins}</td>
+                        <td class="p-2.5">${(acc.emojis || []).join(' ')}</td>
+                        <td class="p-2.5">
+                            <button onclick="adminRewardSingle('${key}')" class="px-2 py-1 bg-purple-600 hover:bg-purple-700 text-white rounded text-[10px] font-bold transition">+50 分</button>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
         }
 
         function adminRewardAll() {
-            Object.values(SECURE_ACCOUNTS).forEach(u => {
-                if (u.role === 'student') {
-                    u.score += 100;
-                    u.weeklyScore += 100;
-                    u.coins += 50;
-                }
+            Object.keys(SECURE_ACCOUNTS).forEach(key => {
+                SECURE_ACCOUNTS[key].score += 100;
+                SECURE_ACCOUNTS[key].weeklyScore += 100;
+                SECURE_ACCOUNTS[key].coins += 50;
             });
             updateUserUI();
             renderLeaderboard();
             renderAdminStudentTable();
-            showToast('已為全班學生發放 +100 經驗 / +50 金幣獎勵！', 'success');
+            showToast('已為全班學生頒發 +100 分 / +50 金幣獎勵！', 'success');
         }
 
         function adminRewardSingle(key) {
@@ -2371,31 +2178,38 @@
                 updateUserUI();
                 renderLeaderboard();
                 renderAdminStudentTable();
-                showToast(`已加發獎勵給 ${SECURE_ACCOUNTS[key].name}`, 'success');
+                showToast(`已為 ${SECURE_ACCOUNTS[key].name} 頒發 +50 分 / +25 金幣！`, 'success');
             }
         }
 
         function adminResetWeeklyScore() {
-            Object.values(SECURE_ACCOUNTS).forEach(u => u.weeklyScore = 0);
+            Object.keys(SECURE_ACCOUNTS).forEach(key => {
+                SECURE_ACCOUNTS[key].weeklyScore = 0;
+            });
+            updateUserUI();
             renderLeaderboard();
-            showToast('週得分排行榜已成功執行結算清空！', 'success');
+            showToast('已執行本週得分結算清空！', 'warning');
         }
 
         function adminExportData() {
             const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(SECURE_ACCOUNTS, null, 2));
             const downloadAnchor = document.createElement('a');
             downloadAnchor.setAttribute("href", dataStr);
-            downloadAnchor.setAttribute("download", `ctm_student_data_week${getISOWeekNumber()}.json`);
+            downloadAnchor.setAttribute("download", `class_data_week_${getISOWeekNumber()}.json`);
             document.body.appendChild(downloadAnchor);
             downloadAnchor.click();
             downloadAnchor.remove();
-            showToast('班級學習數據 JSON 已順利匯出！', 'success');
+            showToast('全班學習數據 JSON 檔已匯出！', 'success');
         }
 
-        /* Initial Login Prompt Trigger */
-        window.addEventListener('DOMContentLoaded', () => {
-            quickLogin('admin_ctm');
-        });
+        // Initialize dashboard when window loads
+        window.onload = () => {
+            initUserDashboard();
+        };
+
+        window.onresize = () => {
+            resizeTdCanvas();
+        };
     </script>
 </body>
 </html>
