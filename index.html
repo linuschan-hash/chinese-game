@@ -72,7 +72,7 @@
     <!-- Toast Notification Overlay -->
     <div id="toast-container" class="fixed top-5 right-5 z-50 flex flex-col gap-2 pointer-events-none"></div>
 
-    <!-- MAIN DASHBOARD PAGE (直接呈現，無須登入) -->
+    <!-- MAIN DASHBOARD PAGE -->
     <div id="dashboard" class="flex-1 flex flex-col min-h-screen">
         
         <!-- Top Navigation Header -->
@@ -196,7 +196,7 @@
                     <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
                         <div>
                             <h3 class="text-lg font-bold text-slate-800 flex items-center">
-                                <i class="fa-solid fa-feather-pointed text-sky-500 mr-2"></i> 精選散文閱讀庫 (24 篇經典名作)
+                                <i class="fa-solid fa-feather-pointed text-sky-500 mr-2"></i> 精選散文閱讀庫 (經典名作專區)
                             </h3>
                             <p class="text-xs text-slate-500 mt-1">選讀文章累積閱讀時間可自動獲得獎勵積分與金幣，選取文字可進行螢光劃線與筆記快照。</p>
                         </div>
@@ -595,14 +595,14 @@
     <!-- MAIN JAVASCRIPT LOGIC -->
     <script>
         /* ==========================================================================
-           1. DATA STRUCTURES & ARTICLES DATA
+           1. DATA STRUCTURES & EXTENDED ARTICLES DATABASE
            ========================================================================== */
         
         const PREFIXES = ["見習", "尚學", "通達", "登峰", "涵養", "敏銳", "卓越", "宗師", "聖賢", "絕倫"];
         const NOUNS = ["書童", "墨客", "秀才", "舉人", "貢士", "進士", "翰林", "狀元", "泰斗", "聖哲"];
         const PET_EMOJIS = ['🌱', '🌿', '📚', '✍️', '🦄', '🦅', '🎓', '📜', '🐉', '👑'];
 
-        // 預設帳戶資料庫 (已安全去化標籤)
+        // 預設帳戶資料庫
         const SECURE_ACCOUNTS = {
             "admin_01": { name: "張國華 (教師)", role: "teacher", score: 1500, coins: 850, weeklyScore: 320, emojis: ['👑', '🐉', '🎓', '🌱'], equippedEmoji: '👑', items: [], bags: [] },
             "stu01": { name: "陳小明 (學生 01)", role: "student", score: 320, coins: 150, weeklyScore: 80, emojis: ['🌱', '🌿'], equippedEmoji: '🌱', items: [], bags: [] },
@@ -617,6 +617,7 @@
             "stu10": { name: "許嘉玲 (學生 10)", role: "student", score: 60, coins: 30, weeklyScore: 20, emojis: ['🌱'], equippedEmoji: '🌱', items: [], bags: [] }
         };
 
+        // 散文閱讀資料庫 (已擴充名家經典作品)
         const ARTICLES = [
             {
                 id: "art_01",
@@ -627,24 +628,66 @@
             },
             {
                 id: "art_02",
+                title: "背影",
+                author: "朱自清",
+                content: `我與父親不相見已有二年餘了，我最不能忘記的是他的背影。\n那年冬天，祖母死了，父親的差事也交卸了，正是禍不單行的日子。我從北京到徐州，打算跟著父親奔喪回家。到徐州見著父親，看見滿院狼藉的東西，又想起了祖母，不禁簌簌地流下眼淚。父親說：「事已至此，不必難過，好在天無絕人之路！」\n他戴着黑布小帽，穿著黑布大馬褂，深青布棉袍，盤跚地走到鐵道邊，慢慢探身下去，尚不大難。可是他穿過鐵道，要爬上那邊月台，就不容易了。他用兩手攀着上面，兩腳再向上縮；他肥胖的身子向左微傾，顯出努力的樣子。這時我看見他的背影，我的淚很快地流下來了。`,
+                analysis: `<p><b>主旨立意：</b>通過描寫父親在車站為「我」買橘子時攀爬月台的背影，表現父愛的深沉與真摯。</p><p><b>寫作技巧：</b>細緻的外貌與動作描寫（「攀」、「縮」、「傾」），以小見大，寄託深情。</p>`
+            },
+            {
+                id: "art_03",
+                title: "荷塘月色",
+                author: "朱自清",
+                content: `這幾天心裏頗不寧靜。今晚在院子裏坐着乘涼，忽然想起日日走過的荷塘，在這滿月的月光下，總該另有一番樣子吧。\n曲曲折折的荷塘上面，彌望的是田田的葉子。葉子出水很高，像亭亭的舞女裙。層層的葉子中間，零星地點綴着白花，有嬝娜地開着的，有羞澀地打着朵兒的；正如一粒粒的明珠，又如碧天裏的星星，又如剛出浴的美人。\n微風過處，送來縷縷清香，彷彿遠處高樓上渺茫的歌聲似的。這時候葉子與花也有一絲的顫動，像閃電般，霎時傳過荷塘的東邊去了。`,
+                analysis: `<p><b>主旨立意：</b>藉由夜遊荷塘所見的美景，抒發內心對寧靜的渴望與淡淡的愁緒。</p><p><b>寫作技巧：</b>善用比喻與通感（將荷香比作「高樓上渺茫的歌聲」），動靜結合，意境優美。</p>`
+            },
+            {
+                id: "art_04",
                 title: "桃花心木",
                 author: "林清玄",
                 content: `種樹的人不定期、不定量地給桃花心木澆水。樹苗在不確定中學會自主尋找水源，根條深深紮入地下，最終長成參天大樹。\n人若在溫室中成長，終將軟弱無能；唯有經歷不確定與磨難，才能鍛鍊出獨立自主的堅韌生命。`,
                 analysis: `<p><b>主旨立意：</b>借物喻人，闡述人在不確定環境中方能培養獨立自主能力。</p>`
             },
             {
-                id: "art_03",
+                id: "art_05",
+                title: "落花生",
+                author: "許地山",
+                content: `我們家的後園有半畝空地。母親說：「讓它荒着怪可惜的，你們那麼愛吃花生，就開闢出來種花生吧。」\n花生的好處很多，有樣東西最可貴。它的果實埋在地裏，不像桃子、石榴、蘋果那樣，把鮮紅嫩綠的果實高高地掛在枝上，使人一見就生愛慕之心。你們看它矮矮地長在地裏，等到成熟了，也不能立刻分辯出來它有沒有果實，必須挖起來才知道。\n父親說：「所以你們要像花生，它雖然不好看，可是很有用。」`,
+                analysis: `<p><b>主旨立意：</b>借花生不求外表華麗、默默奉獻的特性，說明做人應當踏實有用而非虛張聲勢。</p><p><b>寫作技巧：</b>對比烘託（將花生與桃子、石榴、蘋果對比），借物喻理。</p>`
+            },
+            {
+                id: "art_06",
                 title: "提醒幸福",
                 author: "畢淑敏",
                 content: `我們常常習慣於提醒災難、提醒危險，卻常常忘記提醒幸福。\n幸福其實是一種心靈的感悟，當我們平平安安、無病無痛、與家人溫馨相聚時，那就是莫大的幸福。請學會在當下感知並珍惜幸福。`,
                 analysis: `<p><b>主旨立意：</b>喚醒讀者關注當下的微小美好，主動感知與珍惜幸福。</p>`
             },
             {
-                id: "art_04",
+                id: "art_07",
                 title: "目送",
                 author: "龍應台",
                 content: `我慢慢地、慢慢地了解到，所謂父女母子一場，只不過意味著，你和他的緣分就是今生今世不斷地在目送他的背影漸行漸遠。\n你站立在小路的這一端，看著他逐漸消失在小路轉彎的地方，而且，他用背影告訴你：不必追。`,
                 analysis: `<p><b>主旨立意：</b>深刻刻劃三代親情漸行漸遠的目送，含蓄深沉。</p>`
+            },
+            {
+                id: "art_08",
+                title: "匆匆",
+                author: "朱自清",
+                content: `燕子去了，有再來的時候；楊柳枯了，有再青的時候；桃花謝了，有再開的時候。但是，聰明的，你告訴我，我們的日子爲甚麼一去不複返呢？\n洗手的時候，日子從水盆裏過去；吃飯的時候，日子從飯碗裏過去；默默時，便從凝望的雙眼裏過去。我覺察他去的匆匆了，伸出手遮挽時，他又思量着從遮挽着的手邊過去。\n在逃去如飛的日子裏，在千門萬戶的世界裏的我能做甚麼呢？只有徘徊罷了，只有匆匆罷了。`,
+                analysis: `<p><b>主旨立意：</b>感慨時光流逝之迅速與無情，提示人們應珍惜時間、發揮生命的價值。</p><p><b>寫作技巧：</b>排比句式增強節奏感，將無形的「時間」具象化描寫。</p>`
+            },
+            {
+                id: "art_09",
+                title: "髻",
+                author: "琦君",
+                content: `母親的新梳頭，是在舊式的螺絲髻基礎上變出來的。每次梳頭，母親總是面向着牆壁，默默地梳理着長髮。\n後來姨娘來了，姨娘梳的是當時最時髦的「橫愛司頭」，滿頭噴著香水。父親常坐在姨娘房裏聽唱片。\n歲月流逝，母親的髮髻越來越稀疏，最後連姨娘也老了，頭上只剩下一小撮灰白髮絲。那些關於髮髻的怨恨與紛爭，最終都在時光裡沉寂了下來。`,
+                analysis: `<p><b>主旨立意：</b>以「髻」為線索，記錄舊時代婦女的命運與情感糾葛，展現對歲月滄桑的感悟與寬容。</p>`
+            },
+            {
+                id: "art_10",
+                title: "雅舍",
+                author: "梁實秋",
+                content: "「雅舍」最宜月夜，地勢既高，得月較先。看山頭吐月，紅盤乍湧，一更，二更，月華如水，樹影參差，香氣遠出，籠罩四周。\n「雅舍」風來，則雞犬不驚，風去，則蛛絲不著。「雅舍」非高樓大廈，然居於其中，自有一份獨特的超然與清雅。",
+                analysis: `<p><b>主旨立意：</b>傳達隨遇而安、獨享生活雅趣的達觀人生態度。</p>`
             }
         ];
 
@@ -654,6 +697,18 @@
                 options: ["A. 臉上的化妝", "B. 精神的化妝", "C. 生命的化妝", "D. 衣服的化妝"],
                 answer: 2,
                 explanation: "林清玄認為用知識與修養妝點內心是生命的化妝。"
+            },
+            {
+                question: "朱自清《背影》一文中，最動人的關鍵動作描寫發生在何處？",
+                options: ["A. 父親在旅館收拾行李", "B. 父親攀爬月台為我買橘子", "C. 父親在火車上叮嚀茶房", "D. 父親寫信問候"],
+                answer: 1,
+                explanation: "描寫父親穿過鐵道、攀爬月台買橘子的背影是全篇精華。"
+            },
+            {
+                question: "許地山《落花生》一文中，父親希望孩子們像花生一樣，原因是？",
+                options: ["A. 外表好看惹人喜愛", "B. 價格昂貴價值高", "C. 雖然不好看但很有用、默默奉獻", "D. 長得快容易種植"],
+                answer: 2,
+                explanation: "花生不圖虛名、默默奉獻，父親希望孩子做有用的人。"
             },
             {
                 question: "《桃花心木》一文中，種樹人故意不定期澆水的原因是？",
@@ -677,9 +732,9 @@
 
         const MATCH_PAIRS = [
             { term: "生命的化妝", def: "用知識修養妝點內在" },
-            { term: "行道樹", def: "默默承受煙塵無私奉獻" },
-            { term: "絕句比喻", def: "將夏日蟬聲比作絕句" },
-            { term: "桃花心木", def: "不確定環境中自主紮根" }
+            { term: "背影", def: "月台買橘展現深沉父愛" },
+            { term: "荷塘月色", def: "通感比喻描繪月下荷香" },
+            { term: "落花生", def: "不圖虛名默默奉獻之美" }
         ];
 
         /* ==========================================================================
@@ -821,7 +876,7 @@
             document.getElementById('reading-title').innerText = article.title;
             document.getElementById('reading-author').innerText = `作者：${article.author}`;
             
-            const paragraphs = article.content.split('\n').map(p => `<p>${p}</p>`).join('');
+            const paragraphs = article.content.split('\n').map(p => `<p class="mb-3">${p}</p>`).join('');
             document.getElementById('reading-text').innerHTML = paragraphs;
             document.getElementById('reading-analysis').innerHTML = article.analysis;
 
@@ -1825,7 +1880,7 @@
                 }
             });
 
-            // Update & Render Active Warriors (狂暴死士)
+            // Update & Render Active Warriors
             activeWarriors.forEach((warrior) => {
                 const wx = warrior.x * w;
                 const wy = warrior.y * h;
@@ -1862,7 +1917,7 @@
             });
             activeWarriors = activeWarriors.filter(wUnit => wUnit.hp > 0);
 
-            // Update & Render Cavalry Charges (萬馬奔騰逆向衝殺)
+            // Update & Render Cavalry Charges
             cavalryCharges.forEach((cavalry) => {
                 let currNodeIdx = cavalry.nodeIndex;
                 let nextNodeIdx = currNodeIdx - 1;
@@ -1932,7 +1987,7 @@
                                 if (tdBaseHP <= 0) {
                                     triggerGameOver();
                                 }
-                                m.hp = -999; // Marked for removal
+                                m.hp = -999;
                             }
                         }
                     }
@@ -2019,64 +2074,71 @@
         }
 
         /* ==========================================================================
-           7. TABLES & ADMIN RENDER FUNCTIONS
+           7. TABLES, SHOP & ADMIN RENDER FUNCTIONS
            ========================================================================== */
 
         function renderLevelTable() {
             const tbody = document.getElementById('level-table-body');
             if (!tbody) return;
-
             let html = '';
             for (let lv = 1; lv <= 100; lv++) {
-                let stats = calculateLevelAndTitle(20 * Math.pow(lv - 1, 2));
-                if (lv === 100) stats.nextReqScore = 196020;
-
-                const isCurrent = (calculateLevelAndTitle(currentUser.score).level === lv);
-                html += `
-                    <tr class="${isCurrent ? 'bg-sky-50 font-bold text-sky-900 border-l-4 border-l-sky-500' : 'hover:bg-slate-50'}">
-                        <td class="p-3">Lv.${lv}</td>
-                        <td class="p-3 text-lg">${stats.petEmoji}</td>
-                        <td class="p-3">${stats.prefix}</td>
-                        <td class="p-3">${stats.noun}</td>
-                        <td class="p-3">${stats.title}</td>
-                        <td class="p-3 font-mono text-slate-500">${(20 * Math.pow(lv - 1, 2)).toLocaleString()} 分</td>
-                    </tr>
-                `;
+                let prefixIndex = Math.min(Math.floor((lv - 1) / 10), 9);
+                let nounIndex = (lv - 1) % 10;
+                let prefix = PREFIXES[prefixIndex];
+                let noun = NOUNS[nounIndex];
+                let title = `${prefix}${noun}`;
+                let petEmoji = PET_EMOJIS[prefixIndex];
+                let reqScore = 20 * Math.pow(lv - 1, 2);
+                
+                let isCurrent = (calculateLevelAndTitle(currentUser.score).level === lv);
+                html += `<tr class="${isCurrent ? 'bg-sky-50 font-bold text-sky-900' : 'hover:bg-slate-50'}">
+                    <td class="p-3">Lv.${lv} ${isCurrent ? '🌟' : ''}</td>
+                    <td class="p-3 text-lg">${petEmoji}</td>
+                    <td class="p-3">${prefix}</td>
+                    <td class="p-3">${noun}</td>
+                    <td class="p-3"><span class="px-2 py-0.5 rounded bg-sky-100 text-sky-800 text-xs font-semibold">${title}</span></td>
+                    <td class="p-3 font-mono">${reqScore.toLocaleString()} 分</td>
+                </tr>`;
             }
             tbody.innerHTML = html;
         }
 
+        const SHOP_ITEMS = [
+            { id: 'item_01', name: '神奇萌芽', type: 'emoji', val: '🌱', price: 0, desc: '初始靈獸形態' },
+            { id: 'item_02', name: '智慧幼苗', type: 'emoji', val: '🌿', price: 50, desc: '代表持續吸收知識的幼苗' },
+            { id: 'item_03', name: '萬卷典籍', type: 'emoji', val: '📚', price: 100, desc: '博覽群書的學術象徵' },
+            { id: 'item_04', name: '妙筆生花', type: 'emoji', val: '✍️', price: 150, desc: '筆下生花文采斐然' },
+            { id: 'item_05', name: '文彩獨角獸', type: 'emoji', val: '🦄', price: 300, desc: '傳說中的靈感神獸' },
+            { id: 'item_06', name: '大鵬展翅', type: 'emoji', val: '🦅', price: 500, desc: '鵬程萬里志向高遠' },
+            { id: 'item_07', name: '翰林學士帽', type: 'emoji', val: '🎓', price: 800, desc: '金榜題名尊貴象徵' },
+            { id: 'item_08', name: '九天神龍', type: 'emoji', val: '🐉', price: 1200, desc: '至高無上的中華靈龍' },
+            { id: 'item_09', name: '帝王之冠', type: 'emoji', val: '👑', price: 2000, desc: '國士無雙終極稱號外觀' }
+        ];
+
         function renderShop() {
             const grid = document.getElementById('shop-items-grid');
             if (!grid) return;
+            grid.innerHTML = SHOP_ITEMS.map(item => {
+                const isUnlocked = currentUser.emojis.includes(item.val);
+                const isEquipped = currentUser.equippedEmoji === item.val;
 
-            const shopItems = [
-                { emoji: '🐉', name: '神龍頭像', cost: 100 },
-                { emoji: '👑', name: '帝皇寶冠', cost: 200 },
-                { emoji: '🦅', name: '神鷹之翼', cost: 150 },
-                { emoji: '🦄', name: '獨角幻獸', cost: 120 },
-                { emoji: '🎓', name: '學士帽', cost: 80 },
-                { emoji: '📜', name: '竹簡密卷', cost: 60 }
-            ];
-
-            grid.innerHTML = shopItems.map(item => {
-                const isOwned = currentUser.emojis && currentUser.emojis.includes(item.emoji);
-                const isEquipped = currentUser.equippedEmoji === item.emoji;
+                let btnHtml = '';
+                if (isEquipped) {
+                    btnHtml = `<button class="w-full py-1.5 bg-emerald-600 text-white rounded-lg text-xs font-bold pointer-events-none">裝備中</button>`;
+                } else if (isUnlocked) {
+                    btnHtml = `<button onclick="equipEmoji('${item.val}')" class="w-full py-1.5 bg-sky-600 hover:bg-sky-700 text-white rounded-lg text-xs font-bold transition">裝備頭像</button>`;
+                } else {
+                    btnHtml = `<button onclick="buyShopItem('${item.id}', ${item.price}, '${item.val}')" class="w-full py-1.5 bg-amber-500 hover:bg-amber-600 text-white rounded-lg text-xs font-bold transition flex items-center justify-center gap-1">
+                        <i class="fa-solid fa-coins"></i> ${item.price} 購買
+                    </button>`;
+                }
 
                 return `
-                    <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4 text-center flex flex-col items-center justify-between space-y-3">
-                        <div class="text-4xl hover:scale-110 transition cursor-pointer">${item.emoji}</div>
-                        <div>
-                            <div class="font-bold text-sm text-slate-800">${item.name}</div>
-                            <div class="text-xs text-amber-600 font-semibold mt-0.5"><i class="fa-solid fa-coins mr-1"></i>${item.cost} 幣</div>
-                        </div>
-                        ${isEquipped ? `
-                            <button class="w-full py-1.5 bg-emerald-500 text-white rounded-xl text-xs font-bold pointer-events-none">已佩戴</button>
-                        ` : isOwned ? `
-                            <button onclick="equipEmoji('${item.emoji}')" class="w-full py-1.5 bg-sky-600 hover:bg-sky-700 text-white rounded-xl text-xs font-bold transition">佩戴頭像</button>
-                        ` : `
-                            <button onclick="buyEmoji('${item.emoji}', ${item.cost})" class="w-full py-1.5 bg-amber-500 hover:bg-amber-600 text-white rounded-xl text-xs font-bold transition">購買解鎖</button>
-                        `}
+                    <div class="p-4 bg-slate-50 border border-slate-200 rounded-2xl flex flex-col items-center text-center space-y-2 hover:shadow-md transition">
+                        <div class="text-4xl my-1 transform hover:scale-110 transition">${item.val}</div>
+                        <h5 class="font-bold text-sm text-slate-800">${item.name}</h5>
+                        <p class="text-[11px] text-slate-500 line-clamp-2">${item.desc}</p>
+                        <div class="w-full pt-2">${btnHtml}</div>
                     </div>
                 `;
             }).join('');
@@ -2086,52 +2148,46 @@
             currentUser.equippedEmoji = emoji;
             updateUserUI();
             renderShop();
-            showToast(`已佩戴 ${emoji} 頭像！`, 'success');
+            showToast(`已成功裝備靈獸頭像 ${emoji}！`, 'success');
         }
 
-        function buyEmoji(emoji, cost) {
-            if (currentUser.coins < cost) {
-                showToast('金幣不足，快去閱讀或答題賺取金幣吧！', 'warning');
+        function buyShopItem(itemId, price, emojiVal) {
+            if (currentUser.coins < price) {
+                showToast(`金幣不足！還需要 ${price - currentUser.coins} 金幣`, 'warning');
                 return;
             }
-            currentUser.coins -= cost;
-            if (!currentUser.emojis) currentUser.emojis = [];
-            currentUser.emojis.push(emoji);
-            currentUser.equippedEmoji = emoji;
+            currentUser.coins -= price;
+            currentUser.emojis.push(emojiVal);
+            currentUser.equippedEmoji = emojiVal;
             updateUserUI();
             renderShop();
-            showToast(`成功解鎖 ${emoji} ！`, 'success');
+            showToast(`成功解鎖並裝備 ${emojiVal}！`, 'success');
         }
 
         function renderLeaderboard() {
             const tbody = document.getElementById('leaderboard-body');
             if (!tbody) return;
 
-            const sorted = Object.keys(SECURE_ACCOUNTS).map(key => ({
-                key,
-                ...SECURE_ACCOUNTS[key]
-            })).sort((a, b) => b.score - a.score);
+            const sortedUsers = Object.values(SECURE_ACCOUNTS).sort((a, b) => b.score - a.score);
 
-            tbody.innerHTML = sorted.map((acc, index) => {
-                const stats = calculateLevelAndTitle(acc.score);
-                const rankBadge = index === 0 ? '🥇' : index === 1 ? '🥈' : index === 2 ? '🥉' : `${index + 1}`;
-                const isMe = acc.key === currentUserKey;
+            tbody.innerHTML = sortedUsers.map((user, idx) => {
+                const stats = calculateLevelAndTitle(user.score);
+                const rankBadge = idx === 0 ? '🥇 1' : (idx === 1 ? '🥈 2' : (idx === 2 ? '🥉 3' : `${idx + 1}`));
+                const isCurrent = user.name === currentUser.name;
 
                 return `
-                    <tr class="${isMe ? 'bg-sky-50/80 font-bold' : 'hover:bg-slate-50'}">
-                        <td class="p-3 text-center text-base">${rankBadge}</td>
+                    <tr class="${isCurrent ? 'bg-sky-50 font-bold text-sky-900' : 'hover:bg-slate-50'}">
+                        <td class="p-3 text-center font-bold">${rankBadge}</td>
                         <td class="p-3 flex items-center space-x-2">
-                            <span class="text-xl">${acc.equippedEmoji || stats.petEmoji}</span>
-                            <span>${acc.name}</span>
+                            <span class="text-xl">${user.equippedEmoji || stats.petEmoji}</span>
+                            <span>${user.name}</span>
                         </td>
+                        <td class="p-3"><span class="px-2 py-0.5 rounded text-[11px] font-semibold ${user.role === 'teacher' ? 'bg-purple-100 text-purple-800' : 'bg-slate-100 text-slate-700'}">${user.role === 'teacher' ? '教師' : '學生'}</span></td>
                         <td class="p-3">
-                            <span class="px-2 py-0.5 rounded-full text-[10px] text-white ${acc.role === 'teacher' ? 'bg-purple-600' : 'bg-sky-600'}">
-                                ${acc.role === 'teacher' ? '教師' : '學員'}
-                            </span>
+                            <span class="text-xs bg-sky-100 text-sky-800 px-2 py-0.5 rounded font-semibold">Lv.${stats.level} ${stats.title}</span>
                         </td>
-                        <td class="p-3 font-medium">Lv.${stats.level} ${stats.title}</td>
-                        <td class="p-3 font-mono font-bold text-sky-700">${acc.score.toLocaleString()}</td>
-                        <td class="p-3 font-mono text-amber-600">+${acc.weeklyScore.toLocaleString()}</td>
+                        <td class="p-3 font-mono font-bold text-sky-700">${user.score.toLocaleString()} EXP</td>
+                        <td class="p-3 font-mono text-emerald-600 font-semibold">+${user.weeklyScore.toLocaleString()}</td>
                     </tr>
                 `;
             }).join('');
@@ -2141,75 +2197,71 @@
             const tbody = document.getElementById('admin-student-table');
             if (!tbody) return;
 
-            tbody.innerHTML = Object.keys(SECURE_ACCOUNTS).map(key => {
-                const acc = SECURE_ACCOUNTS[key];
-                return `
-                    <tr class="hover:bg-purple-50/50">
-                        <td class="p-2.5 font-mono text-slate-500">${key}</td>
-                        <td class="p-2.5 font-semibold text-slate-800">${acc.name}</td>
-                        <td class="p-2.5 font-mono text-sky-700">${acc.score}</td>
-                        <td class="p-2.5 font-mono text-amber-600">${acc.coins}</td>
-                        <td class="p-2.5">${(acc.emojis || []).join(' ')}</td>
-                        <td class="p-2.5">
-                            <button onclick="adminRewardSingle('${key}')" class="px-2 py-1 bg-purple-600 hover:bg-purple-700 text-white rounded text-[10px] font-bold transition">+50 分</button>
-                        </td>
-                    </tr>
-                `;
-            }).join('');
+            tbody.innerHTML = Object.entries(SECURE_ACCOUNTS).map(([key, acc]) => `
+                <tr class="hover:bg-purple-50/50">
+                    <td class="p-2.5 font-mono text-slate-600">${key}</td>
+                    <td class="p-2.5 font-semibold text-slate-800">${acc.name}</td>
+                    <td class="p-2.5 font-mono text-purple-700 font-bold">${acc.score}</td>
+                    <td class="p-2.5 font-mono text-amber-600 font-bold">${acc.coins}</td>
+                    <td class="p-2.5">${acc.emojis.join(' ')}</td>
+                    <td class="p-2.5">
+                        <button onclick="adminGrantStudent('${key}')" class="px-2 py-1 bg-purple-600 hover:bg-purple-700 text-white rounded text-[11px] font-bold">加 +100分</button>
+                    </td>
+                </tr>
+            `).join('');
         }
 
-        function adminRewardAll() {
-            Object.keys(SECURE_ACCOUNTS).forEach(key => {
+        function adminGrantStudent(key) {
+            if (SECURE_ACCOUNTS[key]) {
                 SECURE_ACCOUNTS[key].score += 100;
                 SECURE_ACCOUNTS[key].weeklyScore += 100;
                 SECURE_ACCOUNTS[key].coins += 50;
-            });
-            updateUserUI();
-            renderLeaderboard();
-            renderAdminStudentTable();
-            showToast('已為全班學生頒發 +100 分 / +50 金幣獎勵！', 'success');
-        }
-
-        function adminRewardSingle(key) {
-            if (SECURE_ACCOUNTS[key]) {
-                SECURE_ACCOUNTS[key].score += 50;
-                SECURE_ACCOUNTS[key].weeklyScore += 50;
-                SECURE_ACCOUNTS[key].coins += 25;
-                updateUserUI();
-                renderLeaderboard();
+                if (key === currentUserKey) updateUserUI();
                 renderAdminStudentTable();
-                showToast(`已為 ${SECURE_ACCOUNTS[key].name} 頒發 +50 分 / +25 金幣！`, 'success');
+                renderLeaderboard();
+                showToast(`已成功為 ${SECURE_ACCOUNTS[key].name} 加發 100 經驗與 50 金幣`, 'success');
             }
         }
 
+        function adminRewardAll() {
+            Object.values(SECURE_ACCOUNTS).forEach(acc => {
+                acc.score += 100;
+                acc.weeklyScore += 100;
+                acc.coins += 50;
+            });
+            updateUserUI();
+            renderAdminStudentTable();
+            renderLeaderboard();
+            showToast('已為全班所有學生加發 +100 經驗值 / +50 金幣！', 'success');
+        }
+
         function adminResetWeeklyScore() {
-            Object.keys(SECURE_ACCOUNTS).forEach(key => {
-                SECURE_ACCOUNTS[key].weeklyScore = 0;
+            Object.values(SECURE_ACCOUNTS).forEach(acc => {
+                acc.weeklyScore = 0;
             });
             updateUserUI();
             renderLeaderboard();
-            showToast('已執行本週得分結算清空！', 'warning');
+            showToast('已完成本週分數結算與清空作業！', 'success');
         }
 
         function adminExportData() {
             const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(SECURE_ACCOUNTS, null, 2));
             const downloadAnchor = document.createElement('a');
             downloadAnchor.setAttribute("href", dataStr);
-            downloadAnchor.setAttribute("download", `class_data_week_${getISOWeekNumber()}.json`);
+            downloadAnchor.setAttribute("download", `chinese_learning_platform_backup_${Date.now()}.json`);
             document.body.appendChild(downloadAnchor);
             downloadAnchor.click();
             downloadAnchor.remove();
-            showToast('全班學習數據 JSON 檔已匯出！', 'success');
+            showToast('全班學習數據 JSON 備份檔已開始下載！', 'success');
         }
 
-        // Initialize dashboard when window loads
-        window.onload = () => {
+        window.addEventListener('DOMContentLoaded', () => {
             initUserDashboard();
-        };
+        });
 
-        window.onresize = () => {
+        window.addEventListener('resize', () => {
             resizeTdCanvas();
-        };
+        });
     </script>
 </body>
 </html>
